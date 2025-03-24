@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  vllm-api:
+    build:
+      context: .
+      dockerfile: vllm/Dockerfile.update
+    ports:
+      - "8000:8000"
+    volumes:
+      - /root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct:/app/models/models--Qwen--Qwen2.5-7B-Instruct
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu] 

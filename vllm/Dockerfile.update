@@ -1,0 +1,11 @@
+FROM vllm/vllm-openai:latest
+
+# 创建模型目录（将作为挂载点）
+WORKDIR /app
+RUN mkdir -p /app/models
+
+# 复制配置文件
+COPY config.yaml /app/config.yaml
+
+# 设置启动命令
+ENTRYPOINT ["python3", "-m", "vllm.entrypoints.openai.api_server", "--config", "/app/config.yaml"] 

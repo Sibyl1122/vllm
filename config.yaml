@@ -1,0 +1,11 @@
+port: 8000
+dtype: "auto"
+max-model-len: 25000
+enable-auto-tool-choice: true
+tool-call-parser: "hermes"
+
+
+model:
+  type: "hf"
+  path: "/app/models/models--Qwen--Qwen2.5-7B-Instruct"
+  tokenizer: "Qwen/Qwen2.5-7B-Instruct"
